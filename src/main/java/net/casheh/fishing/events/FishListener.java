@@ -2,6 +2,7 @@ package net.casheh.fishing.events;
 
 import net.casheh.fishing.Fishing;
 import net.casheh.fishing.manager.FishingItem;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,7 +12,7 @@ import java.util.Random;
 
 public class FishListener implements Listener {
 
-    private Fishing plugin;
+    private final Fishing plugin;
 
     public FishListener(Fishing plugin) {
         this.plugin = plugin;
@@ -28,9 +29,9 @@ public class FishListener implements Listener {
             double num = 0 + (totalChance - 0) * rand.nextDouble();
 
             for (FishingItem fishingItem : plugin.config().getItemChances()) {
-                e.getPlayer().sendMessage(" ");
-                e.getPlayer().sendMessage(num + "");
-                e.getPlayer().sendMessage(fishingItem.getChance() + "");
+//                e.getPlayer().sendMessage(" ");
+//                e.getPlayer().sendMessage(num + "");
+//                e.getPlayer().sendMessage(fishingItem.getChance() + "");
                 if (num < fishingItem.getChance()) {
                     item.setItemStack(fishingItem.buildItemStack());
                     e.getPlayer().sendMessage(plugin.getMessages().getFishCaught(item.getName()));

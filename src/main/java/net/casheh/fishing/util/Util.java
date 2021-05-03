@@ -1,4 +1,4 @@
-package net.casheh.fishing.Util;
+package net.casheh.fishing.util;
 
 import org.bukkit.ChatColor;
 

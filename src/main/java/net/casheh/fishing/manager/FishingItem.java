@@ -1,5 +1,6 @@
 package net.casheh.fishing.manager;
 
+import net.casheh.fishing.nbt.NBTEditor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
@@ -10,22 +11,25 @@ import java.util.List;
 
 public class FishingItem {
 
-    private Material type;
+    private final Material type;
 
-    private String displayName;
+    private final String displayName;
 
-    private boolean glowing;
+    private final boolean glowing;
 
-    private List<String> lore;
+    private final List<String> lore;
 
-    private double chance;
+    private final double chance;
 
-    public FishingItem(Material type, String displayName, boolean glowing, List<String> lore, double chance) {
+    private final double sellPrice;
+
+    public FishingItem(Material type, String displayName, boolean glowing, List<String> lore, double chance, double sellPrice) {
         this.type = type;
         this.displayName = displayName;
         this.glowing = glowing;
         this.lore = lore;
         this.chance = chance;
+        this.sellPrice = sellPrice;
     }
 
     public Material getType() {
@@ -48,6 +52,10 @@ public class FishingItem {
         return this.chance;
     }
 
+    public double getSellPrice() {
+        return this.sellPrice;
+    }
+
     public ItemStack buildItemStack() {
         ItemStack itemStack = new ItemStack(this.type);
         ItemMeta meta = itemStack.getItemMeta();
@@ -62,6 +70,9 @@ public class FishingItem {
         if (this.glowing) {
             itemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 999);
         }
+
+        itemStack = NBTEditor.set(itemStack, this.sellPrice, "FishingPrice");
+
         return itemStack;
     }
 

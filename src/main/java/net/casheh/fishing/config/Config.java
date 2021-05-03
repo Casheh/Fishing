@@ -1,7 +1,7 @@
 package net.casheh.fishing.config;
 
 import net.casheh.fishing.Fishing;
-import net.casheh.fishing.Util.Util;
+import net.casheh.fishing.util.Util;
 import net.casheh.fishing.manager.FishingItem;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -32,7 +32,8 @@ public class Config {
                         Util.color(section.getString(item + ".display-name")),
                         section.getBoolean(item + ".glowing"),
                         Util.color(section.getStringList(item + ".lore")),
-                        section.getDouble(item + ".chance"));
+                        section.getDouble(item + ".chance"),
+                        section.getDouble(item + ".sell-price"));
                 items.add(fishingItem);
             }
         }

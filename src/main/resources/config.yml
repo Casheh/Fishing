@@ -8,3 +8,4 @@ Rewards:
         - ' '
         - '&bThis is a beacon!'
       chance: 0.2
+      sell-price: 50

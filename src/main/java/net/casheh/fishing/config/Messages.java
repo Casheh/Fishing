@@ -1,7 +1,7 @@
 package net.casheh.fishing.config;
 
 import net.casheh.fishing.Fishing;
-import net.casheh.fishing.Util.Util;
+import net.casheh.fishing.util.Util;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class Messages {
 
-    private Fishing plugin;
+    private final Fishing plugin;
 
     private FileConfiguration msgConfig;
 
