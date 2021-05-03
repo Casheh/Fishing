@@ -1,0 +1,10 @@
+Rewards:
+  items:
+    beacon:
+      type: BEACON
+      display-name: '&b&lBeacon'
+      glowing: true
+      lore:
+        - ' '
+        - '&bThis is a beacon!'
+      chance: 0.2
