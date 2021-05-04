@@ -36,6 +36,8 @@ public class Messages {
         msgConfig = YamlConfiguration.loadConfiguration(msgFile);
         msgConfig.addDefault("prefix", "&c&lL&7&lP &8&l» &r");
         msgConfig.addDefault("fish-caught", "&aYou caught a fish! Your reward is: &b%reward%!");
+        msgConfig.addDefault("sell-message", "&aYou sold %amount% items for %price%!");
+        msgConfig.addDefault("no-items", "&cYou do not have any sellable items!");
         msgConfig.options().copyDefaults(true);
         save();
     }
@@ -60,6 +62,16 @@ public class Messages {
 
     public String getFishCaught(String reward) {
         return Util.color(msgConfig.getString("prefix") + msgConfig.getString("fish-caught").replace("%reward%", reward));
+    }
+
+    public String getSellMessage(int amount, double price) {
+        return Util.color(msgConfig.getString("prefix") + msgConfig.getString("sell-message")
+                .replace("%amount%", amount + "")
+                .replace("%price%", price + ""));
+    }
+
+    public String getNoItems() {
+        return Util.color(msgConfig.getString("prefix") + msgConfig.getString("no-items"));
     }
 
 

@@ -27,7 +27,8 @@ public class FishCommand implements CommandExecutor {
         Player p = (Player) sender;
         PlayerInventory inv = p.getInventory();
 
-        int sellPrice = 0;
+        double sellPrice = 0;
+        int totalItems = 0;
 
         for (int i = 0; i < inv.getSize(); i++) {
             ItemStack item = inv.getItem(i);
@@ -35,11 +36,18 @@ public class FishCommand implements CommandExecutor {
                 continue;
             if (NBTEditor.contains(item, "FishingPrice")) {
                 sellPrice += item.getAmount() * NBTEditor.getDouble(item, "FishingPrice");
+                totalItems += item.getAmount();
                 inv.setItem(i, new ItemStack(Material.AIR));
             }
         }
 
+        if (totalItems == 0) {
+            p.sendMessage(plugin.getMessages().getNoItems());
+            return false;
+        }
+
         plugin.getEconomy().depositPlayer(p, sellPrice);
+        p.sendMessage(plugin.getMessages().getSellMessage(totalItems, sellPrice));
 
         return true;
     }
