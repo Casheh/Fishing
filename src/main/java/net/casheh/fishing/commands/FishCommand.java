@@ -35,6 +35,7 @@ public class FishCommand implements CommandExecutor {
                 continue;
             if (NBTEditor.contains(item, "FishingPrice")) {
                 sellPrice += item.getAmount() * NBTEditor.getDouble(item, "FishingPrice");
+                inv.setItem(i, new ItemStack(Material.AIR));
             }
         }
 
